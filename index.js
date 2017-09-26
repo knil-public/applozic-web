@@ -30,7 +30,7 @@ export class SideChat extends React.Component {
       }
     }
     componentWillUnmount() {
-      $(this.node).destroy()
+      $(this.node).empty()
     }
     componentDidMount() {
         window.oModal = ""
@@ -45,7 +45,7 @@ export class SideChat extends React.Component {
         {
           $applozic.fn.applozic(this.props.initOptions)
         }
-        
+
 	}
 
   render() {
