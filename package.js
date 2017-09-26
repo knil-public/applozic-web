@@ -12,10 +12,7 @@ Package.describe({
 
 
 Npm.depends({
-  glob: '6.0.1',
-  react:'^15.4.0',
-  'react-dom':'^15.4.0',
-  'react-helmet':'^5.1.3'
+  glob: '6.0.1'  
 });
 
 // Cordova.depends({});
