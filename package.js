@@ -1,6 +1,6 @@
 Package.describe({
   name: 'knil:applozic-web',
-  version: '0.1.1',
+  version: '0.1.3',
   // Brief, one-line summary of the package.
   summary: 'Web client and javascript api for applozic chat',
   // URL to the Git repository containing the source code for this package.
@@ -12,7 +12,7 @@ Package.describe({
 
 
 Npm.depends({
-  glob: '6.0.1'  
+  glob: '6.0.1'
 });
 
 // Cordova.depends({});
@@ -23,12 +23,14 @@ Package.onUse((api) => {
   var path = Npm.require('path');
   var globSync = Npm.require('glob').sync
   var options = {
-    cwd: path.join(path.resolve('.'), 'packages', 'knil_applozic-web')
+    cwd: '.'//path.join(path.resolve('.'), 'packages', 'knil_applozic-web')
   };
   api.addAssets(globSync('js/**/*.js',options),["web.browser"])
   api.addAssets(globSync('images/**/*.*',options),["web.browser"])
+  api.addAssets(globSync('autosuggest/**/*.*',options),["web.browser"])
+  //add as files so they are minified
   api.addFiles(globSync('css/app/sidebox/*.css',options),["web.browser"])
   api.addFiles('css/app/videocall.css',["web.browser"])
-  api.addAssets(globSync('autosuggest/**/*.*',options),["web.browser"])
+
   api.mainModule("index.js",['web.browser','server'])
 });
