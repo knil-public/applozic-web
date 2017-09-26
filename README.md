@@ -1,5 +1,9 @@
 # Applozic Sidebox React Component For Meteor
 
+```
+meteor add knil:applozic-web@0.1.1.
+```
+
 Renders the sidebox ui outside react dom so not to cause invariant issues.
 
 Just place ```<Sidebox/>``` in your code.
