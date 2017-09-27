@@ -16,13 +16,13 @@ export class SideChat extends React.Component {
       this.jsIncludes = [
         {src:"/packages/knil_applozic-web/js/jquery.min.js"},
         {src:"/packages/knil_applozic-web/js/applozic.plugins.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.widget.min.js", async:""},
-        {src:"/packages/knil_applozic-web/js/applozic.emojis.min.js", async:""},
-        {src:"/packages/knil_applozic-web/js/applozic.socket.min.js", async:""},
+        {src:"/packages/knil_applozic-web/js/applozic.widget.min.js"},
+        {src:"/packages/knil_applozic-web/js/applozic.emojis.min.js"},
+        {src:"/packages/knil_applozic-web/js/applozic.socket.min.js"},
         {src:"/packages/knil_applozic-web/js/locationpicker.jquery.min.js", async:""},
-        {src:"/packages/knil_applozic-web/js/applozic.aes.js", async:""},
-        {src:"/packages/knil_applozic-web/js/app/applozic.common.js", async:""},
-        {src:"/packages/knil_applozic-web/js/app/sidebox/applozic.sidebox.js", async:""}
+        {src:"/packages/knil_applozic-web/js/applozic.aes.js"},
+        {src:"/packages/knil_applozic-web/js/app/applozic.common.js"},
+        {src:"/packages/knil_applozic-web/js/app/sidebox/applozic.sidebox.js"}
       ]
       if(this.props.videoEnabled)
       {
