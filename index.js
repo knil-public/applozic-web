@@ -13,26 +13,42 @@ export class SideChat extends React.Component {
         {src:"/packages/knil_applozic-web/js/app/call/twilio-video.js", async:""},
         {src:"/packages/knil_applozic-web/js/app/call/videocall.js", async:""}
       ]
+      let locShareIncludes = [{src:"/packages/knil_applozic-web/js/locationpicker.jquery.min.js", async:""}]
       this.jsIncludes = [
         {src:"/packages/knil_applozic-web/js/jquery.min.js"},
         {src:"/packages/knil_applozic-web/js/applozic.plugins.min.js"},
         {src:"/packages/knil_applozic-web/js/applozic.widget.min.js"},
         {src:"/packages/knil_applozic-web/js/applozic.emojis.min.js"},
         {src:"/packages/knil_applozic-web/js/applozic.socket.min.js"},
-        {src:"/packages/knil_applozic-web/js/locationpicker.jquery.min.js", async:""},
+        // {src:"/packages/knil_applozic-web/js/locationpicker.jquery.min.js", async:""},
         {src:"/packages/knil_applozic-web/js/applozic.aes.js"},
         {src:"/packages/knil_applozic-web/js/app/applozic.common.js"},
-        {src:"/packages/knil_applozic-web/js/app/sidebox/applozic.sidebox.js"}
+        {src:"/packages/knil_applozic-web/js/app/sidebox/applozic.sidebox.js", id:"applozic-main"}
       ]
+      if(this.props.locationShareEnabled)
+        this.jsIncludes = this.jsIncludes.concat(locShareIncludes)
+
       if(this.props.videoEnabled)
-      {
         this.jsIncludes = jsVideoIncludes.concat(this.jsIncludes)
-      }
     }
     componentWillUnmount() {
       $(this.node).empty()
     }
     componentDidMount() {
+        window.$applozic = window.$applozic || {}
+        let retry = () => {
+           setTimeout(() => {
+              if(window.$applozic && typeof window.$applozic.fn.applozic === "function" && window.$applozic.template)
+              {
+                    if(typeof this.props.initOptions === 'object')
+                      window.$applozic.fn.applozic(this.props.initOptions)
+                    if(this.props.onLoad)
+                      this.props.onLoad()
+
+              }
+              else retry()
+          },100)
+        }
         window.oModal = ""
         if(this.node)
         {
@@ -41,11 +57,7 @@ export class SideChat extends React.Component {
           // $(this.node).append(ui)
           // React.renderComponent(this.node)
         }
-        if(typeof this.props.initOptions === 'object')
-        {
-          $applozic.fn.applozic(this.props.initOptions)
-        }
-
+        $(document).ready(() => retry())
 	}
 
   render() {
