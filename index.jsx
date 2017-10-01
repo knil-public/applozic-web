@@ -74,12 +74,12 @@ export class SideChat extends React.Component {
         if(this.node)
         {
           let ui = this.ui()
-          ReactDOM.render(ui,this.node)
-          // $(this.node).append(ui)
-          // React.renderComponent(this.node)
+          ReactDOM.render(ui,this.node,() => {
+              this.initApplozic()
+              retry()
+            }
+          )
         }
-        this.initApplozic()
-        $(document).ready(() => retry())
 	}
 
   render() {
