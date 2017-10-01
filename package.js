@@ -1,6 +1,6 @@
 Package.describe({
   name: 'knil:applozic-web',
-  version: '0.1.4',
+  version: '0.1.6',
   // Brief, one-line summary of the package.
   summary: 'Web client and javascript api for applozic chat',
   // URL to the Git repository containing the source code for this package.
@@ -32,5 +32,5 @@ Package.onUse((api) => {
   api.addFiles(globSync('css/app/sidebox/*.css',options),["web.browser"])
   api.addFiles('css/app/videocall.css',["web.browser"])
 
-  api.mainModule("index.js",['web.browser','server'])
+  api.mainModule("index.jsx",['web.browser','server'])
 });
