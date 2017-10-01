@@ -1,6 +1,6 @@
 Package.describe({
   name: 'knil:applozic-web',
-  version: '0.1.6',
+  version: '0.1.7',
   // Brief, one-line summary of the package.
   summary: 'Web client and javascript api for applozic chat',
   // URL to the Git repository containing the source code for this package.
