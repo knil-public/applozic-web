@@ -1,6 +1,6 @@
 Package.describe({
   name: 'knil:applozic-web',
-  version: '0.1.7',
+  version: '0.1.9',
   // Brief, one-line summary of the package.
   summary: 'Web client and javascript api for applozic chat',
   // URL to the Git repository containing the source code for this package.
@@ -22,9 +22,11 @@ Package.onUse((api) => {
   api.use('ecmascript');
   var path = Npm.require('path');
   var globSync = Npm.require('glob').sync
-  var options = {
-    cwd: '.'//path.join(path.resolve('.'), 'packages', 'knil_applozic-web')
-  };
+  var curpath = path.resolve('.')
+  var options = {}
+  //handle local package
+  if(!curpath.endsWith("knil_applozic-web"))
+    options.cwd = path.join(path.resolve('.'), 'packages', 'knil_applozic-web')
   api.addAssets(globSync('js/**/*.js',options),["web.browser"])
   api.addAssets(globSync('images/**/*.*',options),["web.browser"])
   api.addAssets(globSync('autosuggest/**/*.*',options),["web.browser"])

@@ -568,6 +568,8 @@
 	left: auto;
 }
 
+
+
 .mck-box .mck-box-backdrop {
 	position: absolute;
 	top: 0;
@@ -2248,7 +2250,7 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-dropup-menu>li>a:focus,
 
 .mck-file-text .file-preview-link {
 	text-decoration: none;
-	width: 100%
+	/*width: 100%*/
 }
 
 .mck-msg-new {
@@ -3720,4 +3722,14 @@ fill:white;
 	margin:10px 0px 5px 0px;
 	width:85%;
 	float:right;
+}
+
+@media screen and (max-width: 640px){
+	#applozic .mck-sidebox.fade.in,#applozic .mck-msg-preview,#applozic .mck-sidebox .mck-box-backdrop.in, #applozic .mck-dropdown-menu
+	#applozic .mck-box .mck-box-dialog.md-box-s,#applozic .mck-sidebox .mck-context-menu,
+	#applozic .mck-sidebox .mck-box-sm,#applozic .mck-box .mck-box-md,#applozic .mck-gm-search-box .mck-box-sm
+	  {
+		width: 100vw;
+		max-width:100vw;
+	}
 }

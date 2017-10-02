@@ -46,23 +46,24 @@ function ApplozicSidebox() {
     } ];
     this.load = function() {
         try {
-            var head = document.getElementsByTagName('head')[0];
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = MCK_STATICPATH + "/js/jquery.min.js";
-            if (script.readyState) { // IE
-                script.onreadystatechange = function() {
-                    if (script.readyState === "loaded" || script.readyState === "complete") {
-                        script.onreadystatechange = null;
-                        mckinitPlugin();
-                    }
-                };
-            } else { // Others
-                script.onload = function() {
-                    mckinitPlugin();
-                };
-            }
-            head.appendChild(script);
+            mckinitPlugin();
+            // var head = document.getElementsByTagName('head')[0];
+            // var script = document.createElement('script');
+            // script.type = 'text/javascript';
+            // script.src = MCK_STATICPATH + "/js/jquery.min.js";
+            // if (script.readyState) { // IE
+            //     script.onreadystatechange = function() {
+            //         if (script.readyState === "loaded" || script.readyState === "complete") {
+            //             script.onreadystatechange = null;
+            //             mckinitPlugin();
+            //         }
+            //     };
+            // } else { // Others
+            //     script.onload = function() {
+            //         mckinitPlugin();
+            //     };
+            // }
+            // head.appendChild(script);
         } catch (e) {
             console.log("Plugin loading error. Refresh page.");
             if (typeof MCK_ONINIT === 'function') {

@@ -16,4 +16,4 @@ window.addEventListener('error', function (e) {
 }, true);
 var imported = document.createElement('script');
 imported.src = MCK_STATICPATH + '/js/app/sidebox/app.js';
-document.head.appendChild(imported);
+document.body.appendChild(imported);

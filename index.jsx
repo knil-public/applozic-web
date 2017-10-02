@@ -45,7 +45,7 @@ export class SideChat extends React.Component {
                       s.type = "text/javascript";
                       s.async = true;
                       s.src = "/packages/knil_applozic-web/js/apploader.js";
-                      h = document.getElementsByTagName('head')[0];
+                      h = document.getElementsByTagName('body')[0];
                       h.appendChild(s);
                       window.applozic = n;
                       n.init = function (t) {
