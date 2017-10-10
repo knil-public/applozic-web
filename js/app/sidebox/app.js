@@ -14,6 +14,7 @@ var applozicSideBox = new ApplozicSidebox();
 applozicSideBox.load();
 function ApplozicSidebox() {
     var googleApiKey = (typeof applozic._globals !== 'undefined' && applozic._globals.googleApiKey)?(applozic._globals.googleApiKey):"AIzaSyDKfWHzu9X7Z2hByeW4RRFJrD9SizOzZt4";
+    var mck_mainappscript = "/js/app/sidebox/applozic.sidebox.1.0-min.js";
     var mck_script_loader1 = [ {
             "name": "widget", "url": MCK_STATICPATH + "/js/applozic.widget.min.js"
     }, {
@@ -190,7 +191,7 @@ function ApplozicSidebox() {
             var body = document.getElementsByTagName('body')[0];
             var script = document.createElement('script');
             script.type = 'text/javascript';
-            script.src = MCK_STATICPATH + "/js/app/sidebox/applozic.sidebox.1.0-min.js";
+            script.src = MCK_STATICPATH + mck_mainappscript
             if (script.readyState) { // IE
                 script.onreadystatechange = function() {
                     if (script.readyState === "loaded" || script.readyState === "complete") {

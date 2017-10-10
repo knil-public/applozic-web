@@ -4,38 +4,9 @@ import ReactDOM from 'react-dom'
 
 export class SideChat extends React.Component {
 
-    constructor(props) {
-      super(props)
 
-      let jsVideoIncludes = [
-        {src:"https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.2/howler.min.js",async:""},
-        {src:"/packages/knil_applozic-web/js/app/call/mck-ringtone-service.js", async:""},
-        {src:"/packages/knil_applozic-web/js/app/call/twilio-video.js", async:""},
-        {src:"/packages/knil_applozic-web/js/app/call/videocall.js", async:""}
-      ]
-      let locShareIncludes = [{src:"/packages/knil_applozic-web/js/locationpicker.jquery.min.js", async:""}]
-      this.jsIncludes = [
-        {src:"/packages/knil_applozic-web/js/jquery.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.plugins.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.widget.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.emojis.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.socket.min.js"},
-        {src:"/packages/knil_applozic-web/js/applozic.aes.js"},
-        {src:"/packages/knil_applozic-web/js/app/applozic.common.js"},
-        {src:"/packages/knil_applozic-web/js/app/sidebox/applozic.sidebox.js", id:"applozic-main"}
-      ]
-      if(this.props.locationShareEnabled)
-        this.jsIncludes = this.jsIncludes.concat(locShareIncludes)
-
-      if(this.props.videoEnabled)
-        this.jsIncludes = jsVideoIncludes.concat(this.jsIncludes)
-    }
-    componentWillMount() {
-      // window.$applozic = jQuery.noConflict(true);
-
-    }
     componentWillUnmount() {
-      $(this.node).empty()
+      this.$sidechat.remove()
     }
 
     initApplozic() {
@@ -55,6 +26,7 @@ export class SideChat extends React.Component {
     }
 
     componentDidMount() {
+       console.log("sidechat mounting...")
         // window.$applozic = window.$applozic || {}
         let retry = () => {
            setTimeout(() => {
@@ -63,37 +35,27 @@ export class SideChat extends React.Component {
                     console.log("SideChat ready!")
                     if(typeof this.props.initOptions === 'object')
                       window.$applozic.fn.applozic(this.props.initOptions)
-                    if(this.props.onLoad)
-                      this.props.onLoad()
+                    if(this.props.onLoad) this.props.onLoad()
 
               }
               else retry()
           },100)
         }
         window.oModal = ""
-        if(this.node)
-        {
-          let ui = this.ui()
-          ReactDOM.render(ui,this.node,() => {
-              this.initApplozic()
-              retry()
-            }
-          )
-        }
+        let ui = this.ui()
+        this.$sidechat = $("<div id='sidechat'></div>")
+        $("body").append(this.$sidechat)
+        ReactDOM.render(ui,this.$sidechat[0],() => {
+            console.log("sidechat mounted...")
+            this.initApplozic()
+            retry()
+          }
+        )
 	}
 
   render() {
     return (
         <div>
-          {/* <Helmet
-          script={this.jsIncludes}
-          // link={[
-          //   {rel:"stylesheet",href:"/packages/knil_applozic-web/css/app/sidebox/applozic.combined.min.css"},
-          //   {rel:"stylesheet",href:"/packages/knil_applozic-web/css/app/sidebox/applozic.sidebox.css"}
-          // ]}
-
-        /> */}
-        <div ref={(ref) => this.node = ref}/>
       </div>
     )
   }
