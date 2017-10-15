@@ -14,7 +14,7 @@ var applozicSideBox = new ApplozicSidebox();
 applozicSideBox.load();
 function ApplozicSidebox() {
     var googleApiKey = (typeof applozic._globals !== 'undefined' && applozic._globals.googleApiKey)?(applozic._globals.googleApiKey):"AIzaSyDKfWHzu9X7Z2hByeW4RRFJrD9SizOzZt4";
-    var mck_mainappscript = "/js/app/sidebox/applozic.sidebox.1.0-min.js";
+    var mck_mainappscript = "/js/app/sidebox/applozic.sidebox.1.1-min.js";
     var mck_script_loader1 = [ {
             "name": "widget", "url": MCK_STATICPATH + "/js/applozic.widget.min.js"
     }, {
