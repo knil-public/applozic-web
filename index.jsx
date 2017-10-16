@@ -6,6 +6,8 @@ export class SideChat extends React.Component {
 
 
     componentWillUnmount() {
+      if(Meteor.isCordova)
+        return
       this.$sidechat.remove()
     }
 
@@ -26,6 +28,8 @@ export class SideChat extends React.Component {
     }
 
     componentDidMount() {
+       if(Meteor.isCordova)
+        return
        console.log("sidechat mounting...")
         // window.$applozic = window.$applozic || {}
         let retry = () => {
